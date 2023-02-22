@@ -1,15 +1,20 @@
-import 'dotenv/config';
+import "dotenv/config";
 
-const usesEmailSignIn = process.env.USES_EMAIL_SIGN_IN === 'true' ? true : false;
-const usesAppleSignIn = process.env.USES_APPLE_SIGN_IN === 'true' ? true : false;
-const usesGoogleSignIn = process.env.USES_GOOGLE_SIGN_IN === 'true' && process.env.GOOGLE_WEB_CLIENT_ID ? true : false;
+const usesEmailSignIn =
+  process.env.USES_EMAIL_SIGN_IN === "true" ? true : false;
+const usesAppleSignIn =
+  process.env.USES_APPLE_SIGN_IN === "true" ? true : false;
+const usesGoogleSignIn =
+  process.env.USES_GOOGLE_SIGN_IN === "true" && process.env.GOOGLE_WEB_CLIENT_ID
+    ? true
+    : false;
 
 export default {
   expo: {
     name: "Portal",
     slug: "portal",
-    owner: "atomlab",
-    version: "0.3.0",
+    owner: "jumpn",
+    version: "0.1.0",
     orientation: "portrait",
     icon: "./assets/images/icon.png",
     scheme: "myapp",
@@ -17,26 +22,26 @@ export default {
     splash: {
       image: "./assets/images/splash.png",
       resizeMode: "contain",
-      backgroundColor: "#ffffff"
+      backgroundColor: "#ffffff",
     },
     updates: {
-      fallbackToCacheTimeout: 0
+      fallbackToCacheTimeout: 0,
     },
-    assetBundlePatterns: [
-      "**/*"
-    ],
+    assetBundlePatterns: ["**/*"],
     ios: {
       usesAppleSignIn: usesAppleSignIn,
-      supportsTablet: true
+      supportsTablet: true,
+      bundleIdentifier: "com.jumpn.portal",
     },
     android: {
       adaptiveIcon: {
         foregroundImage: "./assets/images/adaptive-icon.png",
-        backgroundColor: "#ffffff"
-      }
+        backgroundColor: "#ffffff",
+      },
+      package: "com.jumpn.portal",
     },
     web: {
-      favicon: "./assets/images/favicon.png"
+      favicon: "./assets/images/favicon.png",
     },
     extra: {
       firebase: {
@@ -54,6 +59,9 @@ export default {
       usesGoogleSignIn: usesGoogleSignIn,
       googleExpoClientId: process.env.GOOGLE_EXPO_CLIENT_ID || "",
       googleWebClientId: process.env.GOOGLE_WEB_CLIENT_ID || "",
-    }
-  }
-}
+      eas: {
+        projectId: "81ef3210-1181-427c-8517-24d662a8ec1a",
+      },
+    },
+  },
+};
